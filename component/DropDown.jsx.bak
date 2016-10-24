@@ -1,0 +1,109 @@
+const klassName = require('./util/className');
+const DropDown = React.createClass({
+    getDefaultProps(){
+       return{
+           open:false,
+           multi: false,
+           placeHolder:'click to select...'
+       }
+    },
+    getInitialState(){
+        let {value,options} = this.props;
+        return{
+            options:value,
+            open:false,
+            filterText:''
+        }
+    },
+    formatOptionCell({label,children,value,selected}){
+        // console.log("label:",label,"children:",children,"value:",value)
+        const content = children?children:label
+        let node =  <DropDown.Option selected={selected}  value={value} onClick={()=>{this.handleChangeSelect(value)}}>{content}</DropDown.Option>;
+        return <li key={value}>{node}</li>
+    },
+    formatValut(val,cb){
+        let newVal = val,oldVa = this.state.value;
+        this.setState({
+            value:newVal
+        },cb)
+    },
+    handleChangeSelect(val){
+        // console.log("value--e:",this.props,val)
+        this.formatValut(val,()=>{
+            this.triggerDropValueChange();
+            this.toggleOpen(this.props.multi);
+        })
+    },
+    triggerDropValueChange(){
+        const {onChange} = this.props;
+        let {value} = this.state;
+        if(onChange) onChange(value)
+    },
+    toggleOpen(stat){
+        console.log("stat:",stat)
+        this.setState({
+            open:stat,
+
+        })
+    },
+    render(){
+        const {options,children,placeHolder} = this.props;
+        let {style,className} = this.props;
+        const {value,open} = this.state;
+        className = klassName('dropdown',className)
+        if(this.state.open){
+            className +=' _active'
+        }
+
+        console.log("placeHolder:",placeHolder);
+        let optionNodes = [],node=null,displayLabels= [];
+        displayLabels = placeHolder
+        // console.log("children:",children)
+        if(children){
+
+        }else{
+            for(let i=0;i<options.length;i++){
+                let item = options[i];
+                console.log("value:",value,"---item:",item)
+
+                const pair_label = item.name;
+                let selected = false;
+
+                selected = value==item.value;
+                console.log("selected:",selected)
+                if(selected) displayLabels = item.name
+                // labels = '22'
+                let node = this.formatOptionCell({label:item.name,value:item.value,children,selected});
+                optionNodes.push(node)
+            }
+        }
+        return(
+            <div className={className}>
+                <DropDown.label onClick={()=>{this.toggleOpen(!open)}}>{displayLabels}</DropDown.label>
+                <ul className="_list">{optionNodes}</ul>
+            </div>
+
+        )
+    }
+});
+
+
+// dropdown option
+DropDown.Option = React.createClass({
+    render(){
+        const {select,disabled} = this.props;
+        let className = '_item';
+        if(disabled) className+=' _disabled';
+
+        // console.log("this.props:",this.props)
+        return <div {...this.props} className={className}></div>
+    }
+});
+
+DropDown.label = React.createClass({
+    render(){
+        return (<div className="_label" {...this.props}>{this.props.children}</div>)
+    }
+})
+
+module.exports = DropDown;

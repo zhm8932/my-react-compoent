@@ -1,0 +1,67 @@
+import React from 'react';
+import {CheckBoxGroup, CheckBox} from "./index";
+
+const options = [
+    {'name': 'apple', 'value': 'a'},
+    {'name': 'banana', 'value': 'b', disabled: true},
+    {'name': 'cat', 'value': 'c'},
+    {'name': 'dog', 'value': 'd'},
+];
+
+const checkedVal = ['a', 'd'];
+const checkedVal1 = ['banana'];
+const checkedVal2 = ['c'];
+
+export default class CheckBoxGroupDemo extends React.Component {
+    constructor(props,refs){
+        super(props);
+        this.state = {
+            displayText :checkedVal.join(','),
+            displayText1 :checkedVal1.join(','),
+            displayText2:checkedVal2.join(',')
+        }
+
+    }
+    displayChange(key,value){
+        console.log("displayChange--value:",value)
+        this.setState({
+            [key]:value.join(',')     //key为变量
+        },function () {
+            console.log('this.state:',this.state)
+        })
+    }
+    componentWillMount(){
+        console.log("componentWillMount:");
+    }
+    render() {
+        return (
+            <div>
+                <h3>Checkbox group</h3>
+                <ul>
+                    <li>
+                        <h4>Checkbox group</h4>
+                        <p>you selected value is {this.state.displayText}</p>
+                        <CheckBoxGroup options={options} value={checkedVal} labelName='name' onChange={this.displayChange.bind(this,'displayText')}/>
+                    </li>
+                    <li>
+                        <h4>Checkbox group2</h4>
+                        <p>you selected value is {this.state.displayText2}</p>
+                        <CheckBoxGroup options={options} value={checkedVal2} labelName='name' onChange={this.displayChange.bind(this,'displayText2')}/>
+                    </li>
+                    <li>
+                        <h4>Checkbox Group has children</h4>
+                        <p>you selected value is {this.state.displayText1}</p>
+                        <CheckBoxGroup value={checkedVal1} onChange={this.displayChange.bind(this,'displayText1')}>
+                            <CheckBox value="apple">apple</CheckBox>
+                            <CheckBox value="banana">banana</CheckBox>
+                            <CheckBox value="orange" disabled={true}>orange</CheckBox>
+                        </CheckBoxGroup>
+                    </li>
+
+                </ul>
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(<CheckBoxGroupDemo/>,document.querySelector('.app'));
