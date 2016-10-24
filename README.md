@@ -58,7 +58,7 @@ name是dll暴露的对象名，要跟output.library保持一致；
 context是解析包路径的上下文，这个要跟接下来配置的dll user一致。
 
 运行Webpack(在这里我使用gulp配置任务 运行 gulp dll)，会输出两个文件一个是打包好的vendors.js，一个就是manifest.json，,长这样：
-...javascript
+```javascript
 {
   "name": "vendors",
   "content": {
@@ -102,7 +102,7 @@ context是解析包路径的上下文，这个要跟接下来配置的dll user�
     "./node_modules/webpack/buildin/amd-options.js": 38
   }
 }
-...
+```
 
 Webpack将每个库都进行了编号索引，之后的dll user可以读取这个文件，直接用id来引用。
 
@@ -129,14 +129,14 @@ module.exports = {
 同时配置中搭配noParse和alias使用 可以提高打包速度
 
 noParse: [/moment-with-locales/,/jquery/],
-...javascript
+```javascript
 alias:{
             jquery:'jquery/dist/jquery.min.js',
             react:'react/dist/react.min.js',    //此处react,react-dom别名必须同时设置，否则会出现找不到ReactDOM的问题，同时设置时，不能使用react-dom.min.js
             'react-dom':'react-dom/dist/react-dom.js',  //此处必须设置别名重定向，否则会把ReactDOM重新打包一遍,但是这样浏览器中又找不到ReactDOM  ??
             moment:'moment/min/moment-with-locales.min.js'
         }
-...
+```
 
 项目中如果使用ES6或者React则还需要配置.babelrc文件
 
