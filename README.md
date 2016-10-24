@@ -18,7 +18,7 @@ Dll是Webpack最近新加的功能
 
 const path = require('path');
 const webpack = require('webpack');
-
+``` javascript
 module.exports = {
     entry: {
         vendors: ['react', 'react-dom','moment','jquery']
@@ -51,6 +51,7 @@ module.exports = {
         })
     ]
 };
+```
 webpack.DllPlugin的选项中，
 path是manifest文件的输出路径；
 name是dll暴露的对象名，要跟output.library保持一致；
