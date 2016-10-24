@@ -107,7 +107,7 @@ context是解析包路径的上下文，这个要跟接下来配置的dll user�
 Webpack将每个库都进行了编号索引，之后的dll user可以读取这个文件，直接用id来引用。
 
 Dll user的配置：
-
+``` javascript
 const webpack = require('webpack');
 
 module.exports = {
@@ -125,7 +125,7 @@ module.exports = {
             })
   ],
 };
-
+```
 同时配置中搭配noParse和alias使用 可以提高打包速度
 
 noParse: [/moment-with-locales/,/jquery/],
@@ -139,7 +139,17 @@ alias:{
 ```
 
 项目中如果使用ES6或者React则还需要配置.babelrc文件
-
+```javascript
+{
+   "presets": ["es2015","react"],   //stage-0 es7解析会使打包速度加倍, es2015去掉打包速度会更快，但是压缩是必须加上
+   "ignore":[
+      "jquery.js",
+      "jquery.min.js",
+      "moment-with-locales.js",
+      "moment-with-locales.min.js"
+   ]
+}
+```
 ### Demo
 
 [demo](http://imiao.in)
