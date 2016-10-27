@@ -47,9 +47,9 @@ gulp.task("webpack:dll", function(callback) {
         if(err) throw new gutil.PluginError('webpack:dll',err)
         gutil.log('[webpack:dll]',stats.toString({
             colors:true,
-            hash: false,
-            chunks: false,
-            children: false,
+            hash: true,
+            chunks: true,
+            children: true,
             progress:true
         }));
         callback();

@@ -5,7 +5,7 @@ const Item = React.createClass({
         console.log("Item--children:",children)
         console.log("this.props:",this.props)
         return(
-            <span>item123456</span>
+            <div {...this.props}>{children}</div>
         )
     }
 });

@@ -75,8 +75,8 @@ var config = {
         //配置别名，在项目中可缩减引用路径
         alias:{
             jquery:'jquery/dist/jquery.min.js',
-            react:'react/dist/react.min.js',    //此处react,react-dom别名必须同时设置，否则会出现找不到ReactDOM的问题，同时设置时，不能使用react-dom.min.js
-            'react-dom':'react-dom/dist/react-dom.js',  //此处必须设置别名重定向，否则会把ReactDOM重新打包一遍,但是这样浏览器中又找不到ReactDOM  ??
+            // react:'react/dist/react.min.js',    //此处react,react-dom别名必须同时设置，否则会出现找不到ReactDOM的问题，同时设置时，不能使用react-dom.min.js（这里设置react别名会导致找不到react-addons-css-transition-group/index.js）
+            // 'react-dom':'react-dom/dist/react-dom.js',  //此处必须设置别名重定向，否则会把ReactDOM重新打包一遍,但是这样浏览器中又找不到ReactDOM  ??
             // 'react-dom':'react/lib/ReactDOM.js',  //此处必须设置别名重定向，否则会把ReactDOM重新打包一遍,跟上面效果一直
             moment:'moment/min/moment-with-locales.min.js'
         }

@@ -6,8 +6,16 @@ const DropDown = require('../../component/DropDown');
 const Item = require('../../component/Item');
 const Tab = require('../../component/Tab');
 const Menu = require('../../component/Menu');
+const Modal = require('../../component/Modal');
+const Pin = require('../../component/Pin');
+const Pagination = require('../../component/Pagination');
+const Carousel = require('../../component/Carousel');
+const Message = require('../../component/Message');
+const Notice = require('../../component/Notice');
+const NoticeCenter = require('../../component/NoticeCenter');
 
 import css from '../../css/less/all.less';
+import demo from '../css/demo.less';
 // require('../../css/less/all.less')
 
 module.exports = {
@@ -18,5 +26,13 @@ module.exports = {
     DropDown,
     Item,
     Tab,
-    Menu
+    Menu,
+    Modal,
+    Pin,
+    Pagination,
+    Carousel,
+    Message,
+    Notice,
+    NoticeCenter
+
 }
