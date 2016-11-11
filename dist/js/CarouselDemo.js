@@ -10,7 +10,7 @@ webpackJsonp([0],[
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _index = __webpack_require__(178);
+	var _index = __webpack_require__(163);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -239,7 +239,7 @@ webpackJsonp([0],[
 	// // r.subValue = sub.call(add,4,2,10)
 	// r.showResult()
 	// console.log("R:",r)
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16), __webpack_require__(18)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(3)))
 
 /***/ }
 ]);
